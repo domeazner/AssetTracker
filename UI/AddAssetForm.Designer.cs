@@ -1,6 +1,6 @@
 ﻿namespace AssetTracker
 {
-    partial class Form1
+    partial class AddAssetForm
     {
         /// <summary>
         ///  Required designer variable.
