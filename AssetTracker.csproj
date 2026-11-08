@@ -9,10 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Compile Remove="Models\Asset.cs" />
+    <Compile Remove="Models\Department.cs" />
+    <Compile Remove="Models\Employee.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Docs\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Models\Asset.cs" />
+    <None Include="Models\Department.cs" />
+    <None Include="Models\Employee.cs" />
   </ItemGroup>
 
   <ItemGroup>
