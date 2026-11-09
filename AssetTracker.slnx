@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="../AssetTracker.Tests/AssetTracker.Tests.csproj" Id="70e47bab-532b-47e7-8ba9-becece13a049" />
   <Project Path="AssetTracker.csproj" />
 </Solution>
