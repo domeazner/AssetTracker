@@ -1,5 +1,6 @@
 using AssetTracker.Data;
 using AssetTracker.Models;
+using AssetTracker.Services;
 using AssetTracker.UI;
 using Microsoft.Extensions.Configuration;
 
@@ -11,7 +12,6 @@ static class Program
     static void Main()
     {
         ApplicationConfiguration.Initialize();
-
         Application.Run(new AddAssetForm());
     }
 }
