@@ -1,4 +1,4 @@
-﻿namespace AssetTracker
+﻿namespace AssetTracker.UI
 {
     partial class AddAssetForm
     {

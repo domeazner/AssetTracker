@@ -1,10 +1,9 @@
-namespace AssetTracker
+namespace AssetTracker.UI;
+
+public partial class AddAssetForm : Form
 {
-    public partial class AddAssetForm : Form
+    public AddAssetForm()
     {
-        public AddAssetForm()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }
