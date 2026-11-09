@@ -51,6 +51,38 @@ public partial class AddAssetForm : Form
 
     private void btnSave_Click(object? sender, EventArgs e)
     {
-        // Placeholder: replaced with the real save logic in Step 5.
+        try
+        {
+            var asset = new Asset
+            {
+                SystemName = txtSystemName.Text.Trim(),
+                Model = txtModel.Text.Trim(),
+                Manufacturer = txtManufacturer.Text.Trim(),
+                AssetType = txtAssetType.Text.Trim(),
+                IpAddress = txtIpAddress.Text.Trim(),
+                PurchaseDate = chkHasPurchaseDate.Checked ? dtpPurchaseDate.Value.Date : null,
+                Notes = string.IsNullOrWhiteSpace(txtNotes.Text) ? null : txtNotes.Text.Trim(),
+                EmployeeId = (cboEmployee.SelectedItem as Employee)?.EmployeeId ?? 0
+            };
+
+            _assetService.AddAsset(asset);
+
+            MessageBox.Show($"Asset saved successfully.\n\nAsset ID: {asset.AssetId}",
+                            "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            txtNotes.Clear();
+            chkHasPurchaseDate.Checked = false;
+        }
+        catch (ArgumentException ex)
+        {
+            MessageBox.Show(ex.Message, "Please check your input",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+        catch (SqlException)
+        {
+            MessageBox.Show("The asset could not be saved because the database is unavailable. " +
+                            "Your entries are still on screen, so you can try again.",
+                            "Database error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }
