@@ -1,5 +1,4 @@
 using AssetTracker.Data;
-using AssetTracker.Models;
 using AssetTracker.Services;
 using AssetTracker.UI;
 using Microsoft.Extensions.Configuration;
@@ -12,6 +11,16 @@ static class Program
     static void Main()
     {
         ApplicationConfiguration.Initialize();
-        Application.Run(new AddAssetForm());
+
+        var config = new ConfigurationBuilder()
+            .SetBasePath(AppContext.BaseDirectory)
+            .AddJsonFile("appsettings.json", optional: false)
+            .Build();
+        string connectionString = config.GetConnectionString("AssetDb")!;
+
+        var employeeRepository = new SqlEmployeeRepository(connectionString);
+        var assetService = new AssetService(new SqlAssetRepository(connectionString));
+
+        Application.Run(new AddAssetForm(assetService, new HardwareInfoCollector(), employeeRepository));
     }
 }
